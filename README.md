@@ -39,16 +39,16 @@ new Expand('.js-expand', {
 ```js
 new Expand('.js-expand', {
   trigger: '.js-expand-btn',
-  beforeOpen: (_element, trigger) => { //before expand
+  beforeOpen: (element, trigger) => { //before expand
 
   },
-  onOpen: (_element, trigger) => { // after expand
+  onOpen: (element, trigger) => { // after expand
 
   },
-  beforeClose: (_element, trigger) => { // before close
+  beforeClose: (element, trigger) => { // before close
 
   },
-  onClose: (_element, trigger) => { // after close
+  onClose: (element, trigger) => { // after close
 
   }
 });
