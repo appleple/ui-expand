@@ -30,7 +30,7 @@ import Expand from 'ui-expand'
 
 ```js
 new Expand('.js-expand', {
-  trigger: '.js-expand-btn' //inner element
+  trigger: '.js-expand-btn' //it should be inside `.js-expand`
 });
 ```
 
