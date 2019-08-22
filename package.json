@@ -10,7 +10,7 @@
     "build": "webpack --config webpack.prod.js",
     "build:lib": "tsc",
     "np": "np --no-cleanup",
-    "deploy": "npm-run-all -s build build:lib test np"
+    "deploy": "npm-run-all -s build build:lib np"
   },
   "publishConfig": {
     "access": "public"
