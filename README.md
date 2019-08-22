@@ -1,5 +1,11 @@
 # ui-expand
 
+## Install
+
+```
+$ npm install ui-expand --save
+```
+
 ## Usage
 
 ```html
