@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ui-expand</title>
+</head>
+<body>
+  <style>
+    body {
+      padding: 30px;
+    }
+    .js-expand {
+      padding: 5px;
+      background-color: red;
+      width: 240px;
+      height: 240px;
+      color: #FFF;
+    }
+    #btn {
+      background-color: #FFF;
+      padding: 5px 10px;
+    }
+  </style>
+
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate eos magni a, placeat quisquam ipsam deleniti nesciunt veniam sapiente nam non, praesentium aut? Impedit eos, modi architecto aut esse quod.</p>
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores quae, minus repudiandae eveniet iste vero consequatur est ipsum mollitia consectetur tempore commodi non, deleniti obcaecati quis! Quibusdam id officia ducimus?</p>
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem consequatur in ipsam non eum quis dolores, porro, aliquam facilis cumque veniam nemo perspiciatis recusandae possimus quia vel qui quisquam suscipit.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, optio illo ad neque nobis quidem vel! Ratione ducimus, aliquid optio vitae veritatis rem unde, id fugiat repellendus blanditiis nam facilis.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique officia cupiditate maxime obcaecati ullam aperiam veritatis deserunt ipsum dolorem, earum unde vero est aliquid molestias possimus quis pariatur veniam ducimus.</p>
+  <div class="js-expand">
+      <button class="js-expand-btn">expand</button>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus illum exercitationem, distinctio aliquid laborum obcaecati ducimus, magnam recusandae mollitia corporis nesciunt, explicabo aliquam maiores perferendis? Est asperiores eligendi consectetur ipsam.</p>
+  </div>
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, enim repellat atque numquam expedita vero sapiente perferendis qui, quia explicabo, aliquam praesentium. Dolore dolorem illum libero corrupti error vel expedita!</p>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo repellendus consequatur quia ad laboriosam eligendi, harum, nemo error ducimus praesentium illum fugiat voluptate ea iusto. Quibusdam rem facere nisi minus!</p>
+  <div class="js-expand">
+      <button class="js-expand-btn">expand</button>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, delectus vitae voluptas, corrupti ea expedita velit veniam accusamus repellat ex non esse ipsa harum laudantium veritatis excepturi, sapiente qui. Excepturi.</p>
+  </div>
+  <script src="./bundle/ui-expand.js"></script>
+  <script>
+    new Expand('.js-expand', {
+      trigger: '.js-expand-btn',
+      onOpen: (_element, trigger) => {
+        trigger.innerHTML = 'close';
+      },
+      onClose: (_element, trigger) => {
+        trigger.innerHTML = 'expand';
+      }
+    });
+  </script>
+</body>
+</html>
