@@ -1,6 +1,6 @@
 # ui-expand
 
-![](./assets/icon_fullscreen.svg)
+![](./assets/example.gif)
 
 ## Install
 
