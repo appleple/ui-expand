@@ -15,40 +15,47 @@ const defaults = {
 } as Option;
 
 export default class Expand {
-  elements!: NodeList;
+  elements!: HTMLElement[];
   option!: Option;
   scrollTop!: number;
 
-  constructor(selector: string | NodeList, option: Partial<Option>) {
+  constructor(selector: string | NodeList | HTMLElement, option: Partial<Option>) {
     if (selector instanceof NodeList) {
-      this.elements = selector;
-    } else {
-      this.elements = document.querySelectorAll(selector);
+      this.elements = [].slice.call(selector);
+    } else if (typeof selector === "string") {
+      this.elements = [].slice.call(document.querySelectorAll(selector));
+    } else if (selector instanceof HTMLElement) {
+      this.elements = [selector];
     }
     this.option = { ...defaults, ...option };
-    this.setTrigger();
+    this.elements.forEach((element) => {
+      this.setTrigger(element);
+    });
   }
 
-  private setTrigger() {
-    [].forEach.call(this.elements, (element: HTMLElement) => {
-      element.dataset.expand = "false";
-      const trigger = element.querySelector<HTMLButtonElement>(this.option.trigger);
-      if (trigger) {
-        trigger.addEventListener('click', (e) => {
-          if (element.dataset.expand === "false") {
-            element.dataset.expand = "true";
-            this.expand(element).then(() => {
-              this.option.onOpen(element, trigger);
-            });
-          } else {
-            element.dataset.expand = "false";
-            this.close(element).then(() => {
-              this.option.onClose(element, trigger);
-            });
-          }
-        });
-      }
-    });
+  private setTrigger(element: HTMLElement) {
+    element.dataset.expand = "false";
+    const trigger = element.querySelector<HTMLButtonElement>(this.option.trigger);
+    if (trigger) {
+      trigger.addEventListener('click', (e) => {
+        if (element.dataset.expand === "false") {
+          element.dataset.expand = "true";
+          this.expand(element).then(() => {
+            this.option.onOpen(element, trigger);
+          });
+        } else {
+          element.dataset.expand = "false";
+          this.close(element).then(() => {
+            this.option.onClose(element, trigger);
+          });
+        }
+      });
+    }
+  }
+
+  public addElement(element: HTMLElement) {
+    this.elements.push(element);
+    this.setTrigger(element);
   }
 
   public expand(element: HTMLElement): Promise<void> {
