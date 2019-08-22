@@ -8,6 +8,12 @@
 $ npm install ui-expand --save
 ```
 
+### CDN
+
+```html
+<script src="https://unpkg.com/ui-expand@0.0.3/js/ui-expand.min.js"></script>
+```
+
 ## Usage
 
 ```html
