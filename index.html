@@ -18,9 +18,14 @@
       height: 240px;
       color: #FFF;
     }
-    #btn {
+    .js-expand-btn {
       background-color: #FFF;
       padding: 5px 10px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22.812' height='22.812' viewBox='0 0 22.812 22.812'%3E%3Cg id='グループ_32' data-name='グループ 32' transform='translate(-782 -62)'%3E%3Cg id='グループ_30' data-name='グループ 30' transform='translate(-12 -343)'%3E%3Cg id='グループ_17' data-name='グループ 17'%3E%3Cg id='グループ_16' data-name='グループ 16'%3E%3Cpath id='パス_11' data-name='パス 11' d='M0,0H7.812V7.812' transform='translate(795 413.812) rotate(-90)' fill='none' stroke='%23444' stroke-width='2'/%3E%3C/g%3E%3Cpath id='パス_12' data-name='パス 12' d='M.225,0V8.773' transform='translate(794.841 406.159) rotate(-45)' fill='none' stroke='%23444' stroke-width='2'/%3E%3C/g%3E%3C/g%3E%3Cg id='グループ_28' data-name='グループ 28' transform='translate(783 76)'%3E%3Cg id='グループ_17-2' data-name='グループ 17'%3E%3Cg id='グループ_16-2' data-name='グループ 16' transform='translate(0)'%3E%3Cpath id='パス_11-2' data-name='パス 11' d='M0,7.812H7.812V0' transform='translate(7.812) rotate(90)' fill='none' stroke='%23444' stroke-width='2'/%3E%3C/g%3E%3Cpath id='パス_12-2' data-name='パス 12' d='M0,8.773V0' transform='translate(6.204 1.609) rotate(45)' fill='none' stroke='%23444' stroke-width='2'/%3E%3C/g%3E%3C/g%3E%3Cg id='グループ_31' data-name='グループ 31' transform='translate(796 63)'%3E%3Cg id='グループ_17-3' data-name='グループ 17'%3E%3Cg id='グループ_16-3' data-name='グループ 16'%3E%3Cpath id='パス_11-3' data-name='パス 11' d='M0,7.812H7.812V0' transform='translate(0 7.812) rotate(-90)' fill='none' stroke='%23444' stroke-width='2'/%3E%3C/g%3E%3Cpath id='パス_12-3' data-name='パス 12' d='M0,8.773V0' transform='translate(1.609 6.204) rotate(-135)' fill='none' stroke='%23444' stroke-width='2'/%3E%3C/g%3E%3C/g%3E%3Cg id='グループ_29' data-name='グループ 29' transform='translate(796 76)'%3E%3Cg id='グループ_17-4' data-name='グループ 17' transform='translate(0)'%3E%3Cg id='グループ_16-4' data-name='グループ 16'%3E%3Cpath id='パス_11-4' data-name='パス 11' d='M0,0H7.812V7.812' transform='translate(7.812) rotate(90)' fill='none' stroke='%23444' stroke-width='2'/%3E%3C/g%3E%3Cpath id='パス_12-4' data-name='パス 12' d='M0,0V8.773' transform='translate(7.812 7.812) rotate(135)' fill='none' stroke='%23444' stroke-width='2'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+      background-size: cover;
+      width: 30px;
+      height: 30px;
+      float: right;
     }
   </style>
 
@@ -30,13 +35,13 @@
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, optio illo ad neque nobis quidem vel! Ratione ducimus, aliquid optio vitae veritatis rem unde, id fugiat repellendus blanditiis nam facilis.</p>
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique officia cupiditate maxime obcaecati ullam aperiam veritatis deserunt ipsum dolorem, earum unde vero est aliquid molestias possimus quis pariatur veniam ducimus.</p>
   <div class="js-expand">
-      <button class="js-expand-btn">expand</button>
+      <button class="js-expand-btn"></button>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus illum exercitationem, distinctio aliquid laborum obcaecati ducimus, magnam recusandae mollitia corporis nesciunt, explicabo aliquam maiores perferendis? Est asperiores eligendi consectetur ipsam.</p>
   </div>
   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, enim repellat atque numquam expedita vero sapiente perferendis qui, quia explicabo, aliquam praesentium. Dolore dolorem illum libero corrupti error vel expedita!</p>
   <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo repellendus consequatur quia ad laboriosam eligendi, harum, nemo error ducimus praesentium illum fugiat voluptate ea iusto. Quibusdam rem facere nisi minus!</p>
   <div class="js-expand">
-      <button class="js-expand-btn">expand</button>
+      <button class="js-expand-btn"></button>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, delectus vitae voluptas, corrupti ea expedita velit veniam accusamus repellat ex non esse ipsa harum laudantium veritatis excepturi, sapiente qui. Excepturi.</p>
   </div>
   <script src="./bundle/ui-expand.js"></script>
@@ -44,10 +49,10 @@
     new Expand('.js-expand', {
       trigger: '.js-expand-btn',
       onOpen: (_element, trigger) => {
-        trigger.innerHTML = 'close';
+        trigger.innerHTML = '';
       },
       onClose: (_element, trigger) => {
-        trigger.innerHTML = 'expand';
+        trigger.innerHTML = '';
       }
     });
   </script>
