@@ -13,7 +13,9 @@ const defaults = {
   trigger: ".js-expand-btn",
   transitionFunction: "ease-out",
   onOpen: () => {},
-  onClose: () => {}
+  onClose: () => {},
+  beforeOpen: () => {},
+  beforeClose: () => {}
 } as Option;
 
 export default class Expand {
