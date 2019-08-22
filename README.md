@@ -12,7 +12,7 @@
 
 ```js
 new Expand('.js-expand', {
-  trigger: '.js-expand-btn'
+  trigger: '.js-expand-btn' //inner element
 });
 ```
 
