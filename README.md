@@ -8,6 +8,10 @@
 $ npm install ui-expand --save
 ```
 
+```js
+import Expand from 'ui-expand'
+```
+
 ### CDN
 
 ```html
