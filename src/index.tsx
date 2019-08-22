@@ -67,7 +67,7 @@ export default class Expand {
       element.style.transition = `all ${speed}s ${transitionFunction}`;
       requestAnimationFrame(() => {
         element.style.transform = `translate(${-rect.x}px, ${-rect.y}px)`;
-        element.style.width = "100%";
+        element.style.width = `${window.innerWidth}px`;
         element.style.minHeight = "100vh";
         setTimeout(() => {
           element.style.transition = "";
