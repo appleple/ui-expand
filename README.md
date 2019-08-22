@@ -34,6 +34,12 @@ new Expand('.js-expand', {
   },
   onClose: (_element, trigger) => {
     trigger.innerHTML = 'expand';
+  },
+  beforeOpen: (_element, trigger) => {
+    trigger.innerHTML = 'expand';
+  },
+  beforeClose: (_element, trigger) => {
+    trigger.innerHTML = 'close';
   }
 });
 ```
