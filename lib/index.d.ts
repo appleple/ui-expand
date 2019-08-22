@@ -4,6 +4,8 @@ declare type Option = {
     transitionFunction: string;
     onOpen: (element?: HTMLElement, trigger?: HTMLButtonElement) => void;
     onClose: (element?: HTMLElement, trigger?: HTMLButtonElement) => void;
+    beforeOpen: (element?: HTMLElement, trigger?: HTMLButtonElement) => void;
+    beforeClose: (element?: HTMLElement, trigger?: HTMLButtonElement) => void;
 };
 export default class Expand {
     elements: HTMLElement[];

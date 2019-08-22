@@ -4,6 +4,8 @@ type Option = {
   transitionFunction: string,
   onOpen: (element?: HTMLElement, trigger?: HTMLButtonElement) => void;
   onClose: (element?: HTMLElement, trigger?: HTMLButtonElement) => void;
+  beforeOpen: (element?: HTMLElement, trigger?: HTMLButtonElement) => void;
+  beforeClose: (element?: HTMLElement, trigger?: HTMLButtonElement) => void;
 }
 
 const defaults = {
@@ -40,11 +42,13 @@ export default class Expand {
       trigger.addEventListener('click', (e) => {
         if (element.dataset.expand === "false") {
           element.dataset.expand = "true";
+          this.option.beforeOpen(element, trigger);
           this.expand(element).then(() => {
             this.option.onOpen(element, trigger);
           });
         } else {
           element.dataset.expand = "false";
+          this.option.beforeClose(element, trigger);
           this.close(element).then(() => {
             this.option.onClose(element, trigger);
           });

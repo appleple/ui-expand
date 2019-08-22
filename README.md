@@ -1,5 +1,7 @@
 # ui-expand
 
+![](./assets/icon_fullscreen.svg)
+
 ## Install
 
 ```
