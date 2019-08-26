@@ -70,21 +70,31 @@ export default class Expand {
       const rect = element.getBoundingClientRect() as DOMRect;
       const speed = this.option.speed / 1000;
       const { transitionFunction } = this.option;
-      element.style.transition = `all ${speed}s ${transitionFunction}`;
-      requestAnimationFrame(() => {
-        element.style.transform = `translate(${-rect.x}px, ${-rect.y}px)`;
-        element.style.width = `${window.innerWidth}px`;
-        element.style.minHeight = "100vh";
-        setTimeout(() => {
-          element.style.transition = "";
-          element.style.left = "0";
-          element.style.top = "0";
-          element.style.width = "100%";
-          element.style.transform = "";
-          element.style.position = "fixed";
-          resolve();
-        }, this.option.speed);
-      });
+      const clone = element.cloneNode() as HTMLElement;
+      element.insertAdjacentElement('afterend', clone);
+      element.style.position = "fixed";
+      element.style.width = `${rect.width}px`;
+      element.style.height = `${rect.height}px`;
+      element.style.minHeight = `${rect.height}px`;
+      element.style.left = '0px';
+      element.style.top = '0px';
+      element.style.transform = `translate(${rect.x}px, ${rect.y}px)`;
+      setTimeout(() => {
+        element.style.transition = `all ${speed}s ${transitionFunction}`;
+        requestAnimationFrame(() => {
+          element.style.transform = `translate(0px, 0px)`;
+          element.style.width = `${window.innerWidth}px`;
+          element.style.minHeight = "100vh";
+          setTimeout(() => {
+            // element.style.transition = "";
+            element.style.left = "0";
+            element.style.top = "0";
+            element.style.width = "100%";
+            element.style.transform = "";
+            resolve();
+          }, this.option.speed);
+        });
+      }, 10);
       document.body.style.height = "100vh";
       document.body.style.overflow = "hidden";
     });
@@ -92,34 +102,37 @@ export default class Expand {
 
   public close(element: HTMLElement) {
     return new Promise((resolve) => {
-      element.style.position = "";
-      element.style.left = "";
-      element.style.top = "";
-      element.style.width = "";
       requestAnimationFrame(() => {
-        const rect = element.getBoundingClientRect() as DOMRect;
-        element.style.transform = `translate(${-rect.x}px, ${-rect.y}px)`;
-        element.style.width = "100%";
-        requestAnimationFrame(() => {
-          const speed = this.option.speed / 1000;
-          const { transitionFunction } = this.option;
-          element.style.transition = `all ${speed}s ${transitionFunction}`;
-          element.style.transform = 'translate(0px, 0px)';
-          element.style.width = `${rect.width}px`;
-          element.style.minHeight = "";
-          document.body.style.height = "";
-          document.body.style.overflow = "";
-          window.scrollTo({
-            top: this.scrollTop,
-            left: 0
-          });
-          setTimeout(() => {
-            element.style.transform = "";
-            element.style.width = "";
-            element.style.transition = "";
-            resolve();
-          }, this.option.speed);
+        const clone = element.nextElementSibling;
+        if (!clone) {
+          return;
+        }
+        const rect = clone.getBoundingClientRect() as DOMRect;
+
+        element.style.width = `${rect.width}px`;
+        element.style.minHeight = `${rect.height}px`;
+        element.style.transform = `translate(${rect.x}px, ${rect.y}px)`;
+        document.body.style.height = "";
+        document.body.style.overflow = "";
+
+        window.scrollTo({
+          top: this.scrollTop,
+          left: 0
         });
+        
+        setTimeout(() => {
+          element.style.transform = "";
+          element.style.width = "";
+          element.style.height = "";
+          element.style.transition = "";
+          element.style.minHeight = "";
+          element.style.position = "";
+          const parent = element.parentElement;
+          if (parent) {
+            parent.removeChild(clone);
+          }
+          resolve();
+        }, this.option.speed);
       });
     });
   }
