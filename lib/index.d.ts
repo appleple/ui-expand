@@ -14,7 +14,7 @@ export default class Expand {
     constructor(selector: string | NodeList | HTMLElement, option: Partial<Option>);
     private setTrigger;
     addElement(element: HTMLElement): void;
-    expand(element: HTMLElement): Promise<void>;
-    close(element: HTMLElement): Promise<{}>;
+    expand(element: HTMLElement, trigger: HTMLButtonElement): Promise<void>;
+    close(element: HTMLElement, trigger: HTMLButtonElement): Promise<{}>;
 }
 export {};

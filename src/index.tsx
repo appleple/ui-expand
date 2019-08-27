@@ -44,14 +44,12 @@ export default class Expand {
       trigger.addEventListener('click', (e) => {
         if (element.dataset.expand === "false") {
           element.dataset.expand = "true";
-          this.option.beforeOpen(element, trigger);
-          this.expand(element).then(() => {
+          this.expand(element, trigger).then(() => {
             this.option.onOpen(element, trigger);
           });
         } else {
           element.dataset.expand = "false";
-          this.option.beforeClose(element, trigger);
-          this.close(element).then(() => {
+          this.close(element, trigger).then(() => {
             this.option.onClose(element, trigger);
           });
         }
@@ -64,7 +62,7 @@ export default class Expand {
     this.setTrigger(element);
   }
 
-  public expand(element: HTMLElement): Promise<void> {
+  public expand(element: HTMLElement, trigger: HTMLButtonElement): Promise<void> {
     return new Promise((resolve) => {
       this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
       const rect = element.getBoundingClientRect() as DOMRect;
@@ -79,6 +77,7 @@ export default class Expand {
       element.style.left = '0px';
       element.style.top = '0px';
       element.style.transform = `translate(${rect.x}px, ${rect.y}px)`;
+      this.option.beforeOpen(element, trigger);
       setTimeout(() => {
         element.style.transition = `all ${speed}s ${transitionFunction}`;
         requestAnimationFrame(() => {
@@ -100,7 +99,7 @@ export default class Expand {
     });
   }
 
-  public close(element: HTMLElement) {
+  public close(element: HTMLElement, trigger: HTMLButtonElement) {
     return new Promise((resolve) => {
       requestAnimationFrame(() => {
         const clone = element.nextElementSibling;
@@ -119,7 +118,7 @@ export default class Expand {
           top: this.scrollTop,
           left: 0
         });
-        
+        this.option.beforeClose(element, trigger);
         setTimeout(() => {
           element.style.transform = "";
           element.style.width = "";
