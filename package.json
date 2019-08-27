@@ -1,6 +1,6 @@
 {
   "name": "ui-expand",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Just a simple UI helper to expand elements",
   "main": "lib/index.js",
   "type": "lib/index.d.ts",
