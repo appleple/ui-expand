@@ -15,7 +15,7 @@ import Expand from 'ui-expand'
 ### CDN
 
 ```html
-<script src="https://unpkg.com/ui-expand@0.0.3/js/ui-expand.min.js"></script>
+<script src="https://unpkg.com/ui-expand@latest/js/ui-expand.min.js"></script>
 ```
 
 ## Usage
